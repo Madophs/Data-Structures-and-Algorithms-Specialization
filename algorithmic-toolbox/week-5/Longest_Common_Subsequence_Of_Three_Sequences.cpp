@@ -19,7 +19,7 @@ inline Matrix3D createMatrix(const uint32_t& n, const uint32_t& m, const uint32_
 }
 
 template <typename R, typename... T>
-R minVariadic(T&&... values)
+R maxVariadic(T&&... values)
 {
     R r = 0;
     for (auto val : {values...}) {
@@ -51,7 +51,7 @@ int main()
                 if (v1[i-1u] == v2[j-1u] && v2[j-1u] == v3[k-1u]) {
                     matrix[i][j][k] = matrix[i-1u][j-1u][k-1u] + MATCH_COST;
                 } else {
-                    matrix[i][j][k] = minVariadic<int32_t>(
+                    matrix[i][j][k] = maxVariadic<int32_t>(
                             matrix[i-1u][j][k], matrix[i][j-1u][k], matrix[i][j][k-1u],
                             matrix[i-1u][j-1u][k], matrix[i-1u][j][k-1u], matrix[i][j-1u][k-1u]);
                 }
